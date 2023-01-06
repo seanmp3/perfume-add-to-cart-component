@@ -1,3 +1,4 @@
+/* Custom Properties */
 :root {
   --clr-primary-400: hsl(158, 36%, 37%);
   --clr-secondary-200: hsl(30, 38%, 92%);
@@ -58,4 +59,41 @@ input, button, textarea, select {
 */
 p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
+}
+
+/* General Styling */
+
+body {
+  font-family: var(--ff-base);
+  font-weight: var(--fw-regular);
+  font-size: 0.875rem;
+  color: var(--clr-neutral-400);
+  background-color: var(--clr-secondary-200);
+
+  display: grid;
+  place-content: center;
+  margin: 1rem;
+}
+
+/* product styles */
+
+.product {
+  --content-padding: 1.5rem;
+  --content-spacing: 1rem;
+
+  background-color: var(--clr-neutral-100);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.product__content {
+  display: grid;
+  padding: var(--content-padding);
+  gap: var(--content-spacing);
+}
+
+.price__container {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
