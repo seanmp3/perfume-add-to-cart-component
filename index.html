@@ -18,6 +18,7 @@
   <main>
     <article class="product">
       <picture class="product__img">
+        <source srcset="images/image-product-desktop.jpg" media="(min-width: 600px)">
         <img src="images/image-product-mobile.jpg" alt="Gabrielle Essence Eau De Parfum"/>
       </picture>
 
@@ -32,11 +33,17 @@
         </p>
         
         <div class="price__container">
-          <p class="product__price">$149.99</p>
-          <p class="product__original-price">$169.99</p>
+          <p class="product__price">
+            <span class="visually-hidden">Current Price</span>
+            $149.99
+          </p>
+          <p class="product__original-price">
+            <span class="visually-hidden">Original Price</span>
+            $169.99
+          </p>
         </div>
 
-        <button class="button">Add to Cart</button>
+        <button class="button" data-icon="shopping-cart">Add to Cart</button>
       </div>
     </article>
   </main>

@@ -1,6 +1,7 @@
 /* Custom Properties */
 :root {
   --clr-primary-400: hsl(158, 36%, 37%);
+  --clr-primary-500: hsl(158, 36%, 20%);
   --clr-secondary-200: hsl(30, 38%, 92%);
 
   --clr-neutral-900: hsl(212, 21%, 14%);
@@ -61,6 +62,11 @@ p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
 }
 
+/* Fixes excessive spacing in large text */
+h1, h2, h3 {
+  line-height: 1;
+}
+
 /* General Styling */
 
 body {
@@ -75,15 +81,67 @@ body {
   margin: 1rem;
 }
 
+/* Utilities */
+
+/* Allows more context for screen readers */
+.visually-hidden:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* button styles */
+
+.button {
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+
+  border: 0;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  background-color: var(--clr-primary-400);
+  color: var(--clr-neutral-100);
+  font-weight: var(--fw-bold);
+  font-size: 0.925rem;
+}
+
+.button[data-icon="shopping-cart"]::before {
+  content: "";
+  background-image: url("images/icon-cart.svg");
+  width: 15px;
+  height: 16px;
+}
+
+.button:is(:hover, :focus){
+  background-color: var(--clr-primary-500);
+}
+
 /* product styles */
 
 .product {
-  --content-padding: 1.5rem;
+  --content-padding: 1.7rem;
   --content-spacing: 1rem;
 
+  display: grid;
   background-color: var(--clr-neutral-100);
   border-radius: 0.5rem;
   overflow: hidden;
+  max-width: 600px;
+}
+
+@media (min-width: 600px) {
+  .product {
+    --content-padding: 2rem;
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .product__content {
@@ -92,8 +150,31 @@ body {
   gap: var(--content-spacing);
 }
 
+.product__category {
+  font-size: .8125rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.product__title {
+  font-family: var(--ff-accent);
+  font-size: 2rem;
+  color: var(--clr-neutral-900);
+}
+
 .price__container {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  align-items: center;
+}
+
+.product__price {
+  font-family: var(--ff-accent);
+  font-size: 2rem;
+  color: var(--clr-primary-400)
+}
+
+.product__original-price {
+  text-decoration: line-through;
 }
